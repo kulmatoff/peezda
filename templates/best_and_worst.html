@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лучшие и Худшие Фильмы</title>
+</head>
+<body>
+    <h1>Лучшие и Худшие Фильмы в хаотичном порядке без указания их Metascore</h1>
+    <a href="/">Вернуться на главную</a>
+    <ul>
+        {% for movie in movies %}
+            <li>{{ movie[1] }} (Длина: {{ movie[2] }}, Metascore: {{ movie[3] }}, Age Rating: {{ movie[4] }}, Year: {{ movie[5] }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

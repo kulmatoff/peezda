@@ -5,6 +5,8 @@
 </head>
 <body>
     <a href="/new_movie">Добавить НОВЫЙ Фильм</a>
+    <a href="/best_and_worst">Посмотреть лучшие и худшие фильмы</a>
+
     <h1>Фильтры фильмов</h1>
 
     <form method="POST">
@@ -18,10 +20,15 @@
         <button type="submit">Фильтровать</button>
     </form>
 
+    <h2>Metascore</h2>
+    <p>avg Metascore: {{ avg_metascore }}</p>
+    <p>min Metascore: {{ min_metascore }}</p>
+    <p>max Metascore: {{ max_metascore }}</p>
+
     <h2>Список фильмов</h2>
     <ul>
         {% for movie in movies %}
-            <li>{{ movie[0] }} (Длина: {{ movie[1] }}, Metascore: {{ movie[2] }}, Age Rating: {{ movie[3] }}, Year: {{ movie[4] }})</li>
+            <li>{{ movie[1] }} (Длина: {{ movie[2] }}, Metascore: {{ movie[3] }}, Age Rating: {{ movie[4] }}, Year: {{ movie[5] }}) <a href="/delete_movie?id={{movie[0]}}">Delete this movie</a></li>
         {% endfor %}
     </ul>
 </body>

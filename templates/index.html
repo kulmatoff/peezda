@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтры фильмов</title>
+</head>
+<body>
+    <h1>Фильтры фильмов</h1>
+
+    <form method="POST">
+        <label for="year">Выберите год:</label>
+        <select name="year" id="year">
+            <option value="-">Все года</option>
+            {% for year in years %}
+                <option value="{{ year[0] }}" {% if selected_year == year[0] %}selected{% endif %}>{{ year[0] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Фильтровать</button>
+    </form>
+
+    <h2>Список фильмов</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>{{ movie[0] }} (Длина: {{ movie[1] }}, Metascore: {{ movie[2] }}, Age Rating: {{ movie[3] }}, Year: {{ movie[4] }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

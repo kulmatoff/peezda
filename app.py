@@ -26,5 +26,24 @@ def home():
         selected_year=selected_year
     )
 
+@app.route('/submit', methods=['POST'])
+def submit_movie():
+    title = request.form['title']
+    duration = request.form['duration']
+    metascore = int(request.form['metascore'])
+    age_rating = request.form['age_rating']
+    year = int(request.form['year'])
+    cursor.execute('''
+        INSERT INTO movies (title, duration, metascore, age_rating, year)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (title, duration, metascore, age_rating, year))
+    conn.commit()
+
+    return render_template("movie_added.html")
+    
+@app.route('/new_movie', methods=["GET"])
+def new_movie():
+    return render_template("adding.html")
+
 if __name__ == "__main__":
     app.run()
